@@ -1,17 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class that rotates an object around a pivot point in an orbit with a given radius
+/// </summary>
 public class ObjectRotator : MonoBehaviour
 {
+    [Tooltip("The speed at which the object rotates")]
     public float rotationSpeed = 10f;
+
+    [Tooltip("The axis around which the object rotates")]
     public Vector3 rotationAxis = Vector3.up;
+
+    [Tooltip("The radius of the orbit")]
     public float orbitRadius = 1f;
+
+    [Tooltip("Whether the object should rotate")]
     public bool rotate = true;
+
+    [Tooltip("The object to rotate")]
     public GameObject objectToRotate;
 
+    // The pivot point around which the object rotates
     private GameObject _pivot;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Called before the first frame update
+    /// </summary>
     void Start()
     {
         _pivot = gameObject;
@@ -20,7 +34,9 @@ public class ObjectRotator : MonoBehaviour
             objectToRotate.transform.position = _pivot.transform.position + new Vector3(orbitRadius, 0f, 0f);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Called once per frame
+    /// </summary>
     void Update()
     {
         if (objectToRotate && rotate)
@@ -32,9 +48,6 @@ public class ObjectRotator : MonoBehaviour
             
             // Rotate the object around the pivot in an orbit with a given radius
             objectToRotate.transform.RotateAround(_pivot.transform.position, rotationAxis, rotationSpeed * Time.deltaTime);
-            
-            
-            
         }
     }
 }
