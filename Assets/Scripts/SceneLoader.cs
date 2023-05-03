@@ -6,9 +6,8 @@ using UnityEngine.Serialization;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Index of the current scene
-    [FormerlySerializedAs("_currentSceneIndex")] public int currentSceneIndex;
-    private int _totalNumberOfScenes;
+    [FormerlySerializedAs("_currentSceneIndex")] public int currentSceneIndex; // Index of the current scene
+    private int _totalNumberOfScenes; // Total number of scenes in the build settings
 
     // Singleton
     private static SceneLoader _instance;
@@ -29,11 +28,8 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        print(currentSceneIndex);
-        //check the total number of scenes in the build settings
+        Debug.Log(currentSceneIndex);
         _totalNumberOfScenes = SceneManager.sceneCountInBuildSettings;
-        
-        //LoadAllScenesAsync();
     }
     
     /// <summary>
@@ -41,7 +37,6 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void LoadAllScenesAsync()
     {
-        // Load all scenes asynchronously except the current one
         for (int i = 0; i < _totalNumberOfScenes; i++)
         {
             if (i != currentSceneIndex)
@@ -51,30 +46,40 @@ public class SceneLoader : MonoBehaviour
         }
     }
     
-    
+    /// <summary>
+    /// Load a scene asynchronously by its index
+    /// </summary>
+    /// <param name="sceneIndex">Index of the scene to load</param>
     public void LoadScene(int sceneIndex)
     {
-        // Load the new scene
         SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-        // Update the current scene index
         currentSceneIndex = sceneIndex;
     }
     
+    /// <summary>
+    /// Unload a scene asynchronously by its index
+    /// </summary>
+    /// <param name="sceneIndex">Index of the scene to unload</param>
     public void UnloadScene(int sceneIndex)
     {
-        // Unload the current scene
         SceneManager.UnloadSceneAsync(sceneIndex);
     }
     
+    /// <summary>
+    /// Activate a scene by its index
+    /// </summary>
+    /// <param name="sceneIndex">Index of the scene to activate</param>
     public void ActivateScene(int sceneIndex)
     {
-        // Activate the scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
     }
     
+    /// <summary>
+    /// Deactivate a scene by its index
+    /// </summary>
+    /// <param name="sceneIndex">Index of the scene to deactivate</param>
     public void DeactivateScene(int sceneIndex)
     {
-        // Deactivate the scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
     }
 }

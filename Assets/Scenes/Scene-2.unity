@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc29ee56dd8e0546909bfd93ea76ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineManager: {fileID: 731722954}
   sceneRoot: {fileID: 1849451766}
+  timelineManager: {fileID: 731722954}
   animatedObjects:
   - {fileID: 1602210596}
   - {fileID: 797940373}
@@ -1089,11 +1089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c745ca0bc409d4eb376d22d361e5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 0.1
-  _panSpeed: 0.1
-  _zoomSpeed: 7
-  _minZoom: 5
-  _maxZoom: 100
+  rotationSpeed: 0.1
+  panSpeed: 0.1
+  zoomSpeed: 7
+  minZoom: 5
+  maxZoom: 100
 --- !u!1 &1849451766
 GameObject:
   m_ObjectHideFlags: 0

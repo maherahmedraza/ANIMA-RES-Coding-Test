@@ -13,19 +13,19 @@ public class Scene3Controller : MonoBehaviour
     [SerializeField] private UnityEvent startEvent;
 
     [Header("Camera")]
-    [SerializeField] public Camera mainCamera;
-    [SerializeField] public Vector3 cameraPosition;
-    [SerializeField] public Vector3 cameraRotation;
-    [SerializeField] public float cameraFOV;
+    [HideInInspector] public Camera mainCamera;
+    [HideInInspector] public Vector3 cameraPosition;
+    [HideInInspector] public Vector3 cameraRotation;
+    [HideInInspector] public float cameraFOV;
 
     [Header("Object")]
-    [SerializeField] public int objectIndex;
-    [SerializeField] public Vector3 objectPosition;
-    [SerializeField] public Vector3 objectRotation;
+    [HideInInspector] public int objectIndex;
+    [HideInInspector] public Vector3 objectPosition;
+    [HideInInspector] public Vector3 objectRotation;
 
     [Header("Extra Object")]
     [SerializeField] public GameObject extraObject;
-    [SerializeField] public Vector3 extraObjectPosition = new Vector3(10f, 10f, 10f);
+    [SerializeField] private Vector3 extraObjectPosition = new Vector3(10f, 10f, 10f);
 
     private Scene2Controller _scene2Controller;
     private Scene1Controller _scene1Controller;
